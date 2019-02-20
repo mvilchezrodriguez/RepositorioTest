@@ -58,7 +58,7 @@ public class CalculadoraObject {
     @AndroidFindBy(id="result")
     private AndroidElement txt_resultado;
 
-    //Actions
+    //Actions metodos
 
 
     public void  Sumar()

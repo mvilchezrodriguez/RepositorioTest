@@ -30,7 +30,7 @@ public class CalculadoraTest {
         capabilities.setCapability("platformName", platformName);
         capabilities.setCapability("appPackage", appPackage);
         capabilities.setCapability("appActivity", appActivity);
-
+//driver
         driver = new AndroidDriver<>(new URL(url),capabilities);
 
     }
