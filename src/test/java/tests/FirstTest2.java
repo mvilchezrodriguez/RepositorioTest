@@ -16,6 +16,7 @@ import java.net.URL;
 
 public class FirstTest2 {
 
+    //AndroidDriver
     AndroidDriver<AndroidElement> driver;
 
     @Parameters({"deviceName", "version", "platformName", "appPackage", "appActivity","url"})

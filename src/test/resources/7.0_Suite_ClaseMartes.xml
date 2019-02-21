@@ -14,5 +14,5 @@
             <class name="tests.FirstTest2">
             </class>
         </classes>
-    </test> <!-- Test -->
-</suite> <!-- Suite -->
+    </test>
+</suite>
