@@ -9,7 +9,7 @@
     <parameter name="appActivity" value="com.android.calculator2.Calculator" />
     <parameter name="url" value="http://127.0.0.1:4723/wd/hub" />
 
-    <test name="operacion">
+    <test name="operacion2">
         <classes>
             <class name="tests.FirstTest2">
             </class>
