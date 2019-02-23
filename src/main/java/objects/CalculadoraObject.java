@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CalculadoraObject {
 
+    //Tarea 3.2 - CalculadoraTest
     private AndroidDriver<AndroidElement> driver;
     private WebDriverWait wait;
 
@@ -62,7 +63,7 @@ public class CalculadoraObject {
     @AndroidFindBy(id="result")
     private AndroidElement txt_resultado;
 
-    //Actions metodos
+    //Actions métodos
 
 
     public void  Sumar()
