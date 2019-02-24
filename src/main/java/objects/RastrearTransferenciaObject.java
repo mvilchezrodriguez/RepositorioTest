@@ -29,6 +29,7 @@ public class RastrearTransferenciaObject {
     @AndroidFindBy(id = "tat_mtcn_btn")
     private AndroidElement btn_Siguiente;
 
+//Actions
 
     public void  RegistrarTransacción()
     {

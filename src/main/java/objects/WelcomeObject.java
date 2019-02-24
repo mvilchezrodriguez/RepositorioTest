@@ -31,7 +31,7 @@ public class WelcomeObject {
 
 
 
-    //Actions metodos
+    //Actions metodo
 
 
     public void  SeleccionarMenu()

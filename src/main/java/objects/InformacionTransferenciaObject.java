@@ -44,7 +44,7 @@ public class InformacionTransferenciaObject {
     public String TransferenciaRecibida()
     {
         String msgRecibido = wait.until(ExpectedConditions.visibilityOf(txt_opcionRecibido)).getText();
-        System.out.println("Es: "+msgRecibido);
+        System.out.println("Es:  "+msgRecibido);
         return msgRecibido;
     }
 }
