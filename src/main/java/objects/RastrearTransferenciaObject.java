@@ -8,13 +8,13 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class WelcomeObject {
+public class RastrearTransferenciaObject {
 
     private AndroidDriver<AndroidElement> driver;
     private WebDriverWait wait;
 
 
-    public WelcomeObject( AndroidDriver<AndroidElement> driver){
+    public RastrearTransferenciaObject( AndroidDriver<AndroidElement> driver){
 
         this.driver =driver;
         PageFactory.initElements(new AppiumFieldDecorator(driver),this);
@@ -23,26 +23,19 @@ public class WelcomeObject {
 
     }
 
-    @AndroidFindBy(id = "menuBtn")
-    private AndroidElement btn_Menu;
+    @AndroidFindBy(id = "tracnum")
+    private AndroidElement txt_tracnum;
 
-    @AndroidFindBy(xpath="//android.view.View[@instance='14']")
-    private AndroidElement btn_RastrearTrasferencia;
-
-
-
-    //Actions metodos
+    @AndroidFindBy(id = "tat_mtcn_btn")
+    private AndroidElement btn_Siguiente;
 
 
-    public void  SeleccionarMenu()
+    public void  RegistrarTransacción()
     {
-        wait.until(ExpectedConditions.visibilityOf(btn_Menu)).click();
-
+        wait.until(ExpectedConditions.visibilityOf(txt_tracnum)).sendKeys("7478398776");
+        btn_Siguiente.click();
     }
 
-    public void  SeleccionarRastrearTrasferencia()
-    {
-        wait.until(ExpectedConditions.visibilityOf(btn_RastrearTrasferencia)).click();
 
-    }
+
 }
