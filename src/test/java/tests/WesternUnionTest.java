@@ -1,18 +1,14 @@
 package tests;
 
+import com.sun.java.util.jar.pack.DriverResource;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
-import objects.CountryObject;
-import objects.LanguageObject;
-import objects.WelcomeObject;
+import objects.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -20,6 +16,11 @@ import java.net.URL;
 public class WesternUnionTest {
 
     AndroidDriver<AndroidElement> driver;
+    CountryObject obj;
+    LanguageObject obj2;
+    WelcomeObject obj3;
+    RastrearTransferenciaObject obj4;
+    InformacionTransferenciaObject obj5;
 
     @Parameters({"deviceName", "version", "platformName", "appPackage", "appActivity","url"})
     @BeforeTest
@@ -34,32 +35,38 @@ public class WesternUnionTest {
 
         driver = new AndroidDriver<>(new URL(url),capabilities);
 
+         obj = new CountryObject(driver);
+         obj2 = new LanguageObject(driver);
+         obj3 = new WelcomeObject(driver);
+         obj4= new RastrearTransferenciaObject(driver);
+         obj5 = new InformacionTransferenciaObject(driver);
+        System.out.println("se ejecuto setup");
     }
 
+    @Test(priority = 1)
+    public void TestRatrearEstadoTransferencia() throws InterruptedException {
 
-    @Test
-    public void TestRegistro() throws InterruptedException {
 
-        CountryObject obj = new CountryObject(driver);
-        LanguageObject obj2 = new LanguageObject(driver);
         obj.SeleccionarPeru();
         obj.SeleccionarNext();
         obj2.SeleccionarEspañol();
         obj2.SeleccionarDone();
-
-        Thread.sleep(15000);
-
-        WelcomeObject obj3 = new WelcomeObject(driver);
+        Thread.sleep(6000);
         obj3.SeleccionarMenu();
-
-        Thread.sleep(10000);
-
+        obj3.SeleccionarRastrearTrasferencia();
+        obj4.RegistrarTransacción();
+        String resultadoObtenido= obj5.TransferenciaRecibida();
+        Assert.assertEquals(resultadoObtenido, "Recibido");
+        Thread.sleep(3000);
 
     }
+
+
 
     @AfterTest
     public void quit() {
 
         driver.quit();
+
     }
 }

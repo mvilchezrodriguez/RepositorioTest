@@ -32,7 +32,6 @@ public class InformacionTransferenciaObject {
     private AndroidElement txt_btnRastrearOtraTrasferencia;
 
 
-
     public String InformacionTransferencia()
     {
        String msgInformacion = wait.until(ExpectedConditions.visibilityOf(txt_informacionTransferencia)).getText();

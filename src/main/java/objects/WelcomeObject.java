@@ -29,8 +29,6 @@ public class WelcomeObject {
     @AndroidFindBy(xpath="//android.view.View[@instance='14']")
     private AndroidElement btn_RastrearTrasferencia;
 
-
-
     //Actions metodo
 
 

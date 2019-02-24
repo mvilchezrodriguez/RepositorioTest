@@ -20,7 +20,6 @@ public class RastrearTransferenciaObject {
         PageFactory.initElements(new AppiumFieldDecorator(driver),this);
         wait = new WebDriverWait(this.driver,20);
 
-
     }
 
     @AndroidFindBy(id = "tracnum")
