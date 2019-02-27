@@ -7,11 +7,15 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.Duration;
 
 public class RastrearTransferenciaObject {
@@ -35,10 +39,10 @@ public class RastrearTransferenciaObject {
     private AndroidElement btn_Siguiente;
 
 //Actions
-// 7478398776
-    public void  RegistrarTransacción()
+// 7478398776 -> Recibido
+    public void  RegistrarTransacción(String tracnum)
     {
-        wait.until(ExpectedConditions.visibilityOf(txt_tracnum)).sendKeys("7478398776");
+        wait.until(ExpectedConditions.visibilityOf(txt_tracnum)).sendKeys(tracnum);
         btn_Siguiente.click();
     }
 
@@ -55,7 +59,23 @@ public class RastrearTransferenciaObject {
                 .release().perform();
     }
 
-
+    public void takeScreenshot(int result) throws IOException {
+        String path = "out/test/resources/";
+        File sourceFile = driver.getScreenshotAs(OutputType.FILE);
+        String filename = this.getClass().getName();
+        switch (result) {
+            case 1:
+                filename += ".PASS.jpg";
+                break;
+            case 2:
+                filename += ".FAILED.jpg";
+                break;
+            default: filename += ".OTHER.jpg";
+                break;
+        }
+        File targetFile = new File(path + filename);
+        FileUtils.copyFile(sourceFile, targetFile);
+    }
 
 
 }

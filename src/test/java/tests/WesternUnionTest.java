@@ -8,8 +8,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Assert;
+import org.testng.ITestResult;
 import org.testng.annotations.*;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -23,7 +25,7 @@ public class WesternUnionTest {
     InformacionTransferenciaObject obj5;
 
     @Parameters({"deviceName", "version", "platformName", "appPackage", "appActivity","url"})
-    @BeforeTest
+    @BeforeMethod
     public void setUp(String deviceName, String version, String platformName, String appPackage, String appActivity, String url) throws MalformedURLException {
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -54,23 +56,41 @@ public class WesternUnionTest {
         obj3.EsperarMenu();
         obj4.horizontalSwipeByScreenSize(0.90,  0.10, 0.50);
         Thread.sleep(4000);
-
-     /*
-        obj3.SeleccionarMenu();
         obj3.SeleccionarRastrearTrasferencia();
-        obj4.RegistrarTransacción();
-        String resultadoObtenido= obj5.TransferenciaRecibida();
+        obj4.RegistrarTransacción("7478398776");
+        String resultadoObtenido= obj5.EstadoTransferencia();
         Assert.assertEquals(resultadoObtenido, "Recibido");
         Thread.sleep(3000);
-*/
+
     }
 
 
 
-    @AfterTest
-    public void quit() {
+    @Test(priority = 2)
+    public void TestRatrearEstadoTransferencia3() throws InterruptedException {
 
+
+        obj.SeleccionarPeru();
+        obj.SeleccionarNext();
+        obj2.SeleccionarEspañol();
+        obj2.SeleccionarDone();
+        obj3.EsperarMenu();
+        obj4.horizontalSwipeByScreenSize(0.90,  0.10, 0.50);
+        Thread.sleep(4000);
+        obj3.SeleccionarRastrearTrasferencia();
+        obj4.RegistrarTransacción("1234567890");
+        String resultadoObtenido= obj5.EstadoTransferencia();
+        Assert.assertEquals(resultadoObtenido, "Cancelado");
+        Thread.sleep(3000);
+
+    }
+
+    @AfterMethod
+    public void tearDown(ITestResult result) throws IOException {
+
+        obj4.takeScreenshot(result.getStatus());
         driver.quit();
-
     }
+
+
 }

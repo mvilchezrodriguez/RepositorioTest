@@ -21,15 +21,23 @@ public class InformacionTransferenciaObject {
     }
 
 
+
+
     @AndroidFindBy(xpath="*//android.view.View/android.view.View[2]/android.view.View[4][@instance='23']")
     private AndroidElement txt_opcionRecibido;
 
 
-    @AndroidFindBy(xpath="*//android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[4]/android.view.View[2][@instance='27']")
-    private AndroidElement txt_informacionTransferencia;
+    @AndroidFindBy(xpath="*//android.view.View[2]/android.view.View[2][@instance='21']")
+    private AndroidElement txt_opcionCancelado;
 
     @AndroidFindBy(xpath="//android.widget.Button[@instance='0']")
     private AndroidElement txt_btnRastrearOtraTrasferencia;
+
+    @AndroidFindBy(xpath="*//android.view.View[2]/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[@instance='13']")
+    private AndroidElement lbl_EstadoTransferencia;
+
+    @AndroidFindBy(xpath="*//android.view.View[4]/android.view.View[2][@instance='27']")
+    private AndroidElement txt_informacionTransferencia;
 
 
     public String InformacionTransferencia()
@@ -40,9 +48,24 @@ public class InformacionTransferenciaObject {
 
     }
 
+    public String TransferenciaCancelada()
+    {
+        String msgInformacion = wait.until(ExpectedConditions.visibilityOf(txt_opcionCancelado)).getText();
+        System.out.println("Es: "+msgInformacion);
+        return msgInformacion;
+
+    }
+
     public String TransferenciaRecibida()
     {
         String msgRecibido = wait.until(ExpectedConditions.visibilityOf(txt_opcionRecibido)).getText();
+        System.out.println("Es:  "+msgRecibido);
+        return msgRecibido;
+    }
+
+    public String EstadoTransferencia()
+    {
+        String msgRecibido = wait.until(ExpectedConditions.visibilityOf(lbl_EstadoTransferencia)).getText();
         System.out.println("Es:  "+msgRecibido);
         return msgRecibido;
     }
