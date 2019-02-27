@@ -32,6 +32,12 @@ public class WelcomeObject {
     //Actions metodo
 
 
+    public void  EsperarMenu()
+    {
+        wait.until(ExpectedConditions.visibilityOf(btn_Menu));
+
+    }
+
     public void  SeleccionarMenu()
     {
         wait.until(ExpectedConditions.visibilityOf(btn_Menu)).click();

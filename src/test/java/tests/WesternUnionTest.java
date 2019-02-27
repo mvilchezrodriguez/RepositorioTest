@@ -51,14 +51,18 @@ public class WesternUnionTest {
         obj.SeleccionarNext();
         obj2.SeleccionarEspañol();
         obj2.SeleccionarDone();
-        Thread.sleep(6000);
+        obj3.EsperarMenu();
+        obj4.horizontalSwipeByScreenSize(0.90,  0.10, 0.50);
+        Thread.sleep(4000);
+
+     /*
         obj3.SeleccionarMenu();
         obj3.SeleccionarRastrearTrasferencia();
         obj4.RegistrarTransacción();
         String resultadoObtenido= obj5.TransferenciaRecibida();
         Assert.assertEquals(resultadoObtenido, "Recibido");
         Thread.sleep(3000);
-
+*/
     }
 
 
